@@ -188,11 +188,11 @@ public class FileReader : MonoBehaviour
             }
             for(int i = 0; i < choiceDelArr.Length; i++)
             {
-                demon.choiceDelays[i] = float.Parse(choiceDelArr[i]) / 1000f;
+                demon.choiceDelays[i] = float.Parse(choiceDelArr[i]);
             }
             for(int i = 0; i < rewardDelArr.Length; i++)
             {
-                demon.rewardDelays[i] = float.Parse(rewardDelArr[i]) / 1000f;
+                demon.rewardDelays[i] = float.Parse(rewardDelArr[i]);
             }
         }
         catch(Exception e)

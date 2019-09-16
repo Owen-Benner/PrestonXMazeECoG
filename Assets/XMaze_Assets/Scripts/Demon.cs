@@ -249,6 +249,7 @@ public class Demon : MonoBehaviour
             {
                 segment = segments.Reward;
                 writer.WriteSegment();
+                scoreText.text = score.ToString();
                 delayStart = Time.time;
                 rewardText.enabled = true;
                 move.BeginHold(999f);
@@ -417,7 +418,6 @@ public class Demon : MonoBehaviour
             writer.WriteSelect(select, reward, score);
             segment = segments.Choice;
             writer.WriteSegment();
-            scoreText.text = score.ToString();
             choice = 0;
             move.choiceAxis = 0f;
             delayStart = Time.time;
