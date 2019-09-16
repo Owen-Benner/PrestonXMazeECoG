@@ -34,6 +34,8 @@ public class FileReader : MonoBehaviour
     private string leftRewStr;
     private string rightObjStr;
     private string rightRewStr;
+    private string choiceDelStr;
+    private string rewardDelStr;
 
     private string[] contextArr;
     private string[] holdArr;
@@ -41,6 +43,8 @@ public class FileReader : MonoBehaviour
     private string[] leftRewArr;
     private string[] rightObjArr;
     private string[] rightRewArr;
+    private string[] choiceDelArr;
+    private string[] rewardDelArr;
 
     // Awake is called when the script instance is being loaded
     void Awake()
@@ -69,6 +73,8 @@ public class FileReader : MonoBehaviour
             leftRewStr = reader.ReadLine();
             rightObjStr = reader.ReadLine();
             rightRewStr = reader.ReadLine();
+            choiceDelStr = reader.ReadLine();
+            rewardDelStr = reader.ReadLine();
 
             reader.Close();
         }
@@ -144,6 +150,8 @@ public class FileReader : MonoBehaviour
             leftRewArr = leftRewStr.Split(' ');
             rightObjArr = rightObjStr.Split(' ');
             rightRewArr = rightRewStr.Split(' ');
+            choiceDelArr = choiceDelStr.Split(' ');
+            rewardDelArr = rewardDelStr.Split(' ');
 
             demon.contexts = new int[contextArr.Length];
             demon.holds = new float[holdArr.Length];
@@ -151,6 +159,8 @@ public class FileReader : MonoBehaviour
             demon.leftRewards = new int[leftRewArr.Length];
             demon.rightObjects = new int[rightObjArr.Length];
             demon.rightRewards = new int[rightRewArr.Length];
+            demon.choiceDelays = new float[choiceDelArr.Length];
+            demon.rewardDelays = new float[rewardDelArr.Length];
 
             for(int i = 0; i < contextArr.Length; i++)
             {
@@ -175,6 +185,14 @@ public class FileReader : MonoBehaviour
             for(int i = 0; i < rightRewArr.Length; i++)
             {
                 demon.rightRewards[i] = int.Parse(rightRewArr[i]);
+            }
+            for(int i = 0; i < choiceDelArr.Length; i++)
+            {
+                demon.choiceDelays[i] = float.Parse(choiceDelArr[i]) / 1000f;
+            }
+            for(int i = 0; i < rewardDelArr.Length; i++)
+            {
+                demon.rewardDelays[i] = float.Parse(rewardDelArr[i]) / 1000f;
             }
         }
         catch(Exception e)
